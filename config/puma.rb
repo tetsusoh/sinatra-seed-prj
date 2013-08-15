@@ -3,10 +3,12 @@ when /production/
 	puts "config puma for production"
 	stdout_redirect 'log/app.log', 'log/app.log', true
 
-	# min and max number of threads to use to answer
-	threads 0, 16
+	daemonize true
 
 	bind 'unix://run/puma.sock'
+
+	# min and max number of threads to use to answer
+	threads 0, 16
 
 	# start 2 process
 	workers 2
@@ -14,12 +16,16 @@ when /production/
 when /development/
 	puts "config puma for development"
 
+	daemonize false
+
 	threads 0, 1
 
 	bind 'tcp://0.0.0.0:8080'
 when /testing/
 	puts "config puma for testing"
 	threads 0, 16
+
+	daemonize false
 
 	bind 'tcp://0.0.0.0:8080'
 end
