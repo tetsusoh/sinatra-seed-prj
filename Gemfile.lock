@@ -3,6 +3,7 @@ GEM
   specs:
     haml (4.0.3)
       tilt
+    httpclient (2.3.4.1)
     kgio (2.8.0)
     multi_json (1.7.9)
     oj (2.1.4)
@@ -27,6 +28,7 @@ PLATFORMS
 
 DEPENDENCIES
   haml (= 4.0.3)
+  httpclient (~> 2.3)
   multi_json (~> 1.7)
   oj (~> 2.1)
   puma (= 2.5.1)
