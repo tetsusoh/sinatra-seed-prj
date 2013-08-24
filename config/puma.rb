@@ -1,33 +1,33 @@
 case @options[:environment]
 when /production/
-	puts "config puma for production"
-	stdout_redirect 'log/app.log', 'log/app.log', true
+    puts "config puma for production"
+    stdout_redirect 'log/app.log', 'log/app.log', true
 
-	daemonize true
+    daemonize true
 
-	bind 'unix://run/puma.sock'
+    bind 'unix://run/puma.sock'
 
-	# min and max number of threads to use to answer
-	threads 0, 16
+    # min and max number of threads to use to answer
+    threads 0, 16
 
-	# start 2 process
-	workers 2
-	preload_app!
+    # start 2 process
+    workers 2
+    preload_app!
 when /development/
-	puts "config puma for development"
+    puts "config puma for development"
 
-	daemonize false
+    daemonize false
 
-	threads 0, 1
+    threads 0, 1
 
-	bind 'tcp://0.0.0.0:8080'
+    bind 'tcp://0.0.0.0:8080'
 when /testing/
-	puts "config puma for testing"
-	threads 0, 16
+    puts "config puma for testing"
+    threads 0, 16
 
-	daemonize false
+    daemonize false
 
-	bind 'tcp://0.0.0.0:8080'
+    bind 'tcp://0.0.0.0:8080'
 end
 
 # Load “path” as a rackup file.
