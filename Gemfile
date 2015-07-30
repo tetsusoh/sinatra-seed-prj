@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
-gem "sinatra", "= 1.4.3"
-gem "puma", "= 2.5.1"
-gem "haml", "= 4.0.3"
-gem "unicorn", "= 4.6.3"
-gem "multi_json", "~> 1.7"
-gem "oj", "~> 2.1"
-gem "httpclient", "~> 2.3"
+gem "sinatra"
+gem "puma"
+gem "haml"
+gem "multi_json"
+gem "oj"
+gem "httpclient"
+
+# asset packaging
+gem "sprockets"

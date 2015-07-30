@@ -1,0 +1,10 @@
+!!! 5
+%html
+  %head
+    %meta{:content => "text/html", :charset => "utf-8"}
+    %title Sintra-seed-prj
+    -#%script{:type => "text/javascript", :src => "#{@assets['index.js'].digest_path}", :charset => "utf-8"}
+    %script{:type => "text/javascript", :src => "assets/index.js", :charset => "utf-8"}
+  %body
+    %div#app
+    %script{:type => "text/javascript", :src => "assets/app.js", :charset => "utf-8"}

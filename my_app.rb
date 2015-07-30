@@ -1,16 +1,22 @@
 require 'sinatra'
 require 'logger'
+require 'tilt/haml'
 require 'haml'
 
 class ::Logger; alias_method :write, :<<; end
 
 class MyApp < Sinatra::Application
 
+    set :root, File.dirname(__FILE__)
+    set :public_folder, settings.root + '/static'
+    set :views, settings.root + "/app/views"
+    set :static_cache_control, [:public, :must_revalidate, :max_age => 300]
+
     configure :production do
         # disable sinatra logging. use self defiend logger
         disable :logging
 
-        $log = ::Logger.new("log/app.log", "daily")
+        $log = ::Logger.new("log/app.log")
         $log.level = Logger::INFO
         use Rack::CommonLogger, $log
     end
@@ -38,6 +44,10 @@ class MyApp < Sinatra::Application
         $log.info {"info log"}
         $log.warn {"info log"}
         "Hello, sinatra!"
+    end
+
+    get('/login') do 
+        haml :login, :format => :html5
     end
 
     # start the server if ruby file executed directly
